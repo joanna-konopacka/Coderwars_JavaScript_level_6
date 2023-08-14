@@ -9,27 +9,18 @@ Example:
 */
 
 function countZeros(n) {
-    let nElements = [];
-    let result = 0;
-  
-    if (n % 2 !== 0) {
-      for (let i = 1; i <= n; i += 2) {
-        nElements.push(i);
-      }
-    } else {
-      for (let i = 2; i <= n; i += 2) {
-        nElements.push(i);
-      }
+    let product = 1;
+    
+    for (let i = n % 2 === 0 ? 2 : 1; i <= n; i += 2) {
+      product *= i;
     }
-  
-    let nResult = nElements.reduce((curr, acc) => curr * acc, 1);
-  
-    while (nResult % 10 === 0) {
-      result++;
-      nResult = nResult / 10;
+    
+    let zeros = 0;
+    while (product % 10 === 0) {
+      zeros++;
+      product /= 10;
     }
-  
-    return result;
+    
+    return zeros;
   }
-
   
